@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sachit's Fragrance Recommender</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+.mySlides {display: none}
+</style>
+</head>
+<body class="w3-content w3-border-left w3-border-right">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-light-grey w3-collapse w3-top" style="z-index:3;width:260px" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
+    <h3><strong>Jump To:</strong></h3>
+    {% if result_list is not none: %}
+    <h4><a href="#recs" class="w3-text-blue">Your Recommendations</a><br></h4>
+    {% endif %}
+    <h4>
+    <a href="#pagetop">Top of Page</a><br>
+    <a href="#gens">Targeted Genders</a><br>
+    <a href="#brands">Brands</a><br>
+    <a href="#accs">Main Accords</a><br>
+    <a href="#tops">Top Notes</a><br>
+    <a href="#mids">Middle Notes</a><br>
+    <a href="#bases">Base Notes</a><br>
+    <a href="#allnotes">Any Notes</a><br>
+    <a href="#longs">Longevity</a><br>
+    <a href="#sills">Sillage</a><br>
+    <a href="#vals">Price Value</a><br>
+    <br>
+    <a href="#getrec" class="w3-text-green">Get Recommendation</a></h4>
+    <h6 class="w3-text-red">Hit the Submit button!</h6>
+    <h4><a href="#fin">Bottom of Page</a></h4><br>
+    <hr>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#GitHub" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-github"></i> GitHub</a>
+    <a href="https://www.linkedin.com/in/sachitkrishnan/" class="w3-bar-item w3-button w3-padding-16" onclick="document.getElementById('subscribe').style.display='block'"><i class="fa fa-linkedin"></i> LinkedIn</a>
+    <a href="mailto:sachit@umich.edu" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i> Cont@ct</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+  <span class="w3-bar-item">Rental</span>
+  <a href="javascript:void(0)" class="w3-right w3-bar-item w3-button" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-white" style="margin-left:260px">
+
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:80px"></div>
+
+  <!-- Slideshow Header -->
+  <div class="w3-container">
+    <h2 class="w3-text-blue" id="pagetop">Sachit's Cologne & Perfume Recommender</h2>
+  </div>
+
+  <div class="w3-container">
+  <p>
+        {% if result_list is not none: %}
+        <div class="w3-container">
+        <h2 class="w3-text-blue" id="recs">{{result_list[0]}}</h2>
+        </div>
+                <div class="tweet_post_list">
+                {% for obj in result_list[1]: %}
+                      <strong><h3>{{obj.name}} by {{obj.brand}}</h3></strong>
+                      <h5>
+                      <strong>Rating:</strong> {{obj.rating}}<br>
+                      <strong>Main Accord:</strong> {{obj.primaryAccord()}}<br>
+                      <strong>Top Notes:</strong> {% for i in obj.top: %}{{i}}, {% endfor %}<br>
+                      <strong>Middle Notes:</strong> {% for i in obj.mid: %}{{i}}, {% endfor %}<br>
+                      <strong>Base Notes:</strong> {% for i in obj.base: %}{{i}}, {% endfor %}<br>
+                      <strong>Longevity:</strong> {{obj.longevity}}<br>
+                      <strong>Sillage:</strong> {{obj.sillage}}<br>
+                      <strong>Price Value:</strong> {{obj.value}}<br></h5>
+                      <img src={{obj.pic}} alt="alternatetext" height=”200” width="200">
+                      <p><h6>{{obj.description}}</h6></p>
+                      <hr>
+                {% endfor %}
+                </div>
+        {% endif %}
+    </p>
+    </div>
+    <hr>
+
+  <div class="w3-container">
+    <h3>Select fragrance attributes of your choice :)</h3>
+    <h5>Pro tip: You can select multiple in each category!</h5>
+    <hr>
+
+    <div style="">
+      <form id="frm-lang" name="userinput" action="/outputPage" method="post">
+
+        <p><label><i class="fa" id="gens"></i> <h3><strong>Targeted Genders</strong></h3></label></p>
+        {% for gen in fd.gens %}
+          <input type="checkbox" name="gens" value="{{gen}}">
+          <label>{{gen}}</label><br>
+        {% endfor %}
+        <hr>
+        
+        <p><label><i class="fa" id="brands"></i> <h3><strong>Brands</strong></h3></label></p>
+        {% for brand in fd.brands %}
+          <input type="checkbox" name="brands" value="{{brand}}">
+          <label>{{brand}}</label><br>
+        {% endfor %}
+        <hr>
+
+        <p><label><i class="fa" id="accs"></i> <h3><strong>Main Accords</strong></h3></label></p>
+        {% for acc in fd.accs %}
+          <input type="checkbox" name="accs" value="{{acc}}">
+          <label>{{acc}}</label><br>
+        {% endfor %}
+        <hr>
+
+        <p><label><i class="fa" id="tops"></i> <h3><strong>Top Notes</strong></h3></label></p>
+        {% for top in fd.tops %}
+          <input type="checkbox" name="tops" value="{{top}}">
+          <label>{{top}}</label><br>
+        {% endfor %}
+        <hr>
+
+        <p><label><i class="fa" id="mids"></i> <h3><strong>Middle Notes</strong></h3></label></p>
+        {% for mid in fd.mids %}
+          <input type="checkbox" name="mids" value="{{mid}}">
+          <label>{{mid}}</label><br>
+        {% endfor %}
+        <hr>
+
+        <p><label><i class="fa" id="bases"></i> <h3><strong>Base Notes</strong></h3></label></p>
+        {% for base in fd.bases %}
+          <input type="checkbox" name="bases" value="{{base}}">
+          <label>{{base}}</label><br>
+        {% endfor %}
+        <hr>
+
+        <p><label><i class="fa" id="allnotes"></i> <h3><strong>Any Notes</strong></h3></label></p>
+        <p><label><i class="fa"></i> <h4><strong>Overrides all top, middle, and base note selections!</strong></h4></label></p>
+        {% for allnote in fd.allnotes %}
+          <input type="checkbox" name="allnotes" value="{{allnote}}">
+          <label>{{allnote}}</label><br>
+        {% endfor %}
+        <hr>
+
+        <p><label><i class="fa" id="longs"></i> <h3><strong>Longevity</strong></h3></label></p>
+        {% for long in fd.longs %}
+          <input type="checkbox" name="longs" value="{{long}}">
+          <label>{{long}}</label><br>
+        {% endfor %}
+        <hr>
+
+        <p><label><i class="fa" id="sills"></i> <h3><strong>Sillage</strong></h3></label></p>
+        {% for sill in fd.sills %}
+          <input type="checkbox" name="sills" value="{{sill}}">
+          <label>{{sill}}</label><br>
+        {% endfor %}
+        <hr>
+
+        <p><label><i class="fa" id="vals"></i> <h3><strong>Price Value</strong></h3></label></p>
+        {% for val in fd.vals %}
+          <input type="checkbox" name="vals" value="{{val}}">
+          <label>{{val}}</label><br>
+        {% endfor %}
+        <hr>
+
+        <p><input class="w3-button w3-block w3-green w3-center-align" id="getrec" type="submit" value="Submit"/></p>
+        <hr>
+
+      </form>  
+    </div>
+    <hr>
+    <p id="fin"></p>
+  </div>
+
+<script>
+// Script to open and close sidebar when on tablets and phones
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Slideshow Apartment Images
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+
+function ShowHide(divId)
+{
+if(document.getElementById(divId).style.display == 'none')
+{
+document.getElementById(divId).style.display='block';
+}
+else
+{
+document.getElementById(divId).style.display = 'none';
+}
+}
+
+</script>
+
+</body>
+</html>
