@@ -9,7 +9,7 @@
 from classes import *
 from datahandling import *
 
-def GraphConstruct(graphpath):
+def GraphConstruct1(graphpath):
     '''
     Load the graph from the JSON cache into the Graph data structure.
     
@@ -45,5 +45,5 @@ def GraphConstruct(graphpath):
 
 if __name__ == '__main__':
     graphPath = "data/fragraph.json"
-    graph1 = GraphConstruct(graphPath)
+    graph1 = GraphConstruct1(graphPath)
     print(list(graph1.nodes.keys()))
