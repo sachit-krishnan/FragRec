@@ -24,7 +24,7 @@ templatePath = 'userinput3.html'
 #Increase the value of the int 'lim_dat' to scrape more results.
 #Remove comments and run.
 
-#lim_dat = 1
+#lim_dat = 3
 #b1 = pageSetup()
 #u1 = getURLs(b1)
 #d1 = fragScrape(u1[:lim_dat])
