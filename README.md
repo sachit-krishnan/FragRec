@@ -21,6 +21,7 @@ All the above libraries can be installed by running ``pip install <library_name>
 2. ``scraping.py``: Python file containing all the functions pertaining to the crawling and scraping of Fragrantica pages.
 3. ``datahandling.py``: Python file containing all the functions pertaining to caching, accessing, and processing of the data.
 4. ``main.py``: The main control file making all the necessary function calls for the proper running of the program.
+5. ``graph_read.py``: Standalone Python file to read the graph from the JSON cache ``fragraph.json``.
 5. ``data``: Directory containing the cached data and graph.
     - ``PerfumesFinal.json``: JSON cache containing the processed perfumed data acquired via web crawling and scraping.
     - ``fragraph.json``: JSON cache containing the graph information (node and edge information).
