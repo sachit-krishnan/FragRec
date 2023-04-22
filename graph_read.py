@@ -27,16 +27,16 @@ def GraphConstruct1(graphpath):
     #Creating the graph of fragrances:
     fragraph = Graph()
 
-    #Adding the attribute nodes to fragraph
+    #Populating the attribute nodes using the cache
     for k, v in attributes.items():
         fragraph.addNode(k, v)
 
-    #Adding the fragrance nodes to fragraph
+    #Populating the fragrance nodes using the cache
     for k, v in frag.items():
         fg = Fragrance(FragLoad(v))
         fragraph.addNode(k, fg)
         
-    #Adding the edges to fragraph
+    #Populating the edges using the cache
     for k, v in neigh.items():
         for n in v:
             fragraph.addEdge(k, n)
