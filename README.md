@@ -33,6 +33,6 @@ All the above libraries can be installed by running ``pip install <library_name>
 1. The program can be run via command line by navigating to the program directory and executing the command ``python3 main.py``.
 2. Once the program is run, the user will be shown the IP address of the local host in the Terminal. The user is then requested to open a web browser of their choice and navigate to the page by adding `/inputPage` to the local host's address.
 3. Upon arriving at the Fragrance Recommender page, the user is encouraged to select the fragrance attributes of their choice and click the `Submit` button. The user is also encouraged to use the `Jump to:` hyperlinks to navigate the page seamlessly.
-4. Upon clicking `Submit`, the user is given a list of recommendations with a comprehensive account of each fragrance. If the user wishes for another recommendation, they may submit a new form; else they may close the browser. Upon closing the browser, ``Ctrl + C`` (or ``command + C`` on Mac decives) in the Terminal will end the program.
+4. Upon clicking `Submit`, the user is given a list of recommendations with a comprehensive account of each fragrance. If the user wishes for another recommendation, they may submit a new form; else they may close the browser. Upon closing the browser, ``Ctrl + C`` (or ``command + C`` on Mac devices) in the Terminal will end the program.
 
 Alternately, the user may run the program on Jupyter Notebook.
