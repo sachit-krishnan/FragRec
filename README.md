@@ -14,7 +14,7 @@ This repository contains an API that enables a user to get cologne and perfume r
 - werkzeug
 - random
 
-All the above libraries can be installed by running ``pip install <library_name>`` in the terminal.
+All the above libraries can be installed by running ``pip install -r depend.txt`` in the Terminal.
 
 ## Program Files & Directories
 1. ``classes.py``: Python file containing all the class definitions used in the program.
@@ -28,6 +28,7 @@ All the above libraries can be installed by running ``pip install <library_name>
 6. ``templates``: Directory containing the HTML template to be rendered using flask
     - ``userinput3.html``: HTML template to be rendered to the user
 7. ``complete.ipynb``: Jupyter Notebook containing the entire program code. (To be used alternatively to the .py files.)
+8. ``depend.txt``: Text file containing all the Python library dependencies for this project.
 
 ## Program Execution
 1. The program can be run via command line by navigating to the program directory and executing the command ``python3 main.py``.
