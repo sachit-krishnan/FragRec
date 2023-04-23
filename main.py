@@ -18,7 +18,7 @@ from scraping import *
 app = Flask(__name__)
 dataPath = "data/PerfumesFinal.json"
 graphPath = "data/fragraph.json"
-templatePath = 'userinput3.html'
+templatePath = 'index.html'
 
 #Crawling Fragrantica and scraping data
 #Increase the value of the int 'lim_dat' to scrape more results.
@@ -47,8 +47,7 @@ fd = inputAttributes(frag)
 graph = GraphConstruct(graphPath)
 
 # HTML template rendering using Flask
-print("\nOn your browser, add '/inputPage' to your local host's address and refresh.\n")
-@app.route('/inputPage')
+@app.route('/')
 def inputPage():
     return render_template(templatePath, fd = fd, result_list=None) 
 
