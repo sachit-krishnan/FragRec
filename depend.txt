@@ -1,0 +1,11 @@
+flask
+splinter
+BeautifulSoup
+time
+webdriver_manager
+requests
+csv
+json
+selenium
+werkzeug
+random
