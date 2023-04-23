@@ -26,13 +26,13 @@ All the above libraries can be installed by running ``pip install -r depend.txt`
     - ``PerfumesFinal.json``: JSON cache containing the processed perfumed data acquired via web crawling and scraping.
     - ``fragraph.json``: JSON cache containing the graph information (node and edge information).
 6. ``templates``: Directory containing the HTML template to be rendered using flask
-    - ``userinput3.html``: HTML template to be rendered to the user
+    - ``index.html``: HTML template to be rendered to the user
 7. ``complete.ipynb``: Jupyter Notebook containing the entire program code. (To be used alternatively to the .py files.)
 8. ``depend.txt``: Text file containing all the Python library dependencies for this project.
 
 ## Program Execution
 1. The program can be run via command line by navigating to the program directory and executing the command ``python3 main.py``.
-2. Once the program is run, the user will be shown the IP address of the local host in the Terminal. The user is then requested to open a web browser of their choice and navigate to the page by adding `/inputPage` to the local host's address.
+2. Once the program is run, the user will be shown the IP address of the local host in the Terminal. The user is then requested to open a web browser of their choice and navigate to the page by adding the local host's address.
 3. Upon arriving at the Fragrance Recommender page, the user is encouraged to select the fragrance attributes of their choice and click the `Submit` button. The user is also encouraged to use the `Jump to:` hyperlinks to navigate the page seamlessly.
 4. Upon clicking `Submit`, the user is given a list of recommendations with a comprehensive account of each fragrance. If the user wishes for another recommendation, they may submit a new form; else they may close the browser. Upon closing the browser, ``Ctrl + C`` in the Terminal will end the program.
 
