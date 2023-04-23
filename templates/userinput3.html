@@ -42,7 +42,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     <hr>
   </div>
   <div class="w3-bar-block">
-    <a href="#GitHub" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-github"></i> GitHub</a>
+    <a href="https://github.com/sachit-krishnan/FragRec" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-github"></i> GitHub</a>
     <a href="https://www.linkedin.com/in/sachitkrishnan/" class="w3-bar-item w3-button w3-padding-16" onclick="document.getElementById('subscribe').style.display='block'"><i class="fa fa-linkedin"></i> LinkedIn</a>
     <a href="mailto:sachit@umich.edu" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i> Cont@ct</a>
   </div>
@@ -78,6 +78,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
                 {% for obj in result_list[1]: %}
                       <strong><h3>{{obj.name}} by {{obj.brand}}</h3></strong>
                       <h5>
+                      <strong>Targeted Gender:</strong> {{obj.gender}}<br>
                       <strong>Rating:</strong> {{obj.rating}}<br>
                       <strong>Main Accord:</strong> {{obj.primaryAccord()}}<br>
                       <strong>Top Notes:</strong> {% for i in obj.top: %}{{i}}, {% endfor %}<br>
