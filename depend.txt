@@ -1,11 +1,7 @@
 flask
 splinter
-BeautifulSoup
-time
+beautifulsoup4
 webdriver_manager
 requests
-csv
-json
 selenium
 werkzeug
-random
